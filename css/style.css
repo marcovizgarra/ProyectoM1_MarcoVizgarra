@@ -1,0 +1,36 @@
+body{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    background-color: hsl(0, 0%, 6%);
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.mainHeader {
+    display: flex;
+    background-color: hsl(0, 0%, 0%);
+    padding: 10px;
+    border-bottom: 5px solid;
+     border-color: transparent;
+     /* borde con linear gradient*/
+     background:
+     /* capa superior: fondo negro */
+     linear-gradient(#121212, #121212) padding-box,
+     /* capa inferior: degrade */
+     linear-gradient(
+        80deg, rgb(245, 251, 63) 0%,
+        rgba(43, 172, 237, 1) 32%,
+        rgba(151, 185, 79, 1) 60%,
+        rgba(174, 92, 199, 1) 72%,
+        rgba(252, 70, 107, 1) 100%) border-box;
+}
+
+.mainHeader .logoColorFul{
+    width: 350px;
+}
+
+.mainHeader ul li {
+    list-style: none;
+}
