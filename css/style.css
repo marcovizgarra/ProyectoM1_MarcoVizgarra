@@ -9,16 +9,13 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Roboto", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: normal;
-    font-style: normal;
-    font-variation-settings:
-        "wdth" 100;
+     font-optical-sizing: auto;
+     font-weight: normal;
+     font-style: normal;
 }
 
 .main-header {
-    display: flex;
-    background-color: hsl(0, 0%, 0%);
+    display: flex;  
     padding: 10px;
     border-bottom: 5px solid;
     border-color: transparent;
@@ -41,7 +38,7 @@ body {
 
 nav ul {
     display: flex;
-    flex-direction: row;
+     flex-direction: row;
     height: fit-content;
 }
 
@@ -73,29 +70,24 @@ nav ul li button {
 
 .palette-container {
     display: flex;
-    justify-content: center;
+     justify-content: center;
+     flex-direction: row;
     width: 100%;
     height: 100%;
 }
 
-.palette-container .palettes {
+.palette-container .color-card {
     display: flex;
-    justify-content: center;
-    flex-direction: row;
-    width: 100%;
-    height: 100%;
-}
-
-.palette-container .palettes .color-card {
-    display: flex;
-    border: 1px solid black;
+     justify-content: center;
+     align-items:end;
+    padding-bottom: 30px;
     width: 20%;
     flex-grow: 1;
 }
 
 footer {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+     flex-direction: row;
+     justify-content: center;
     text-transform: uppercase;
 }
