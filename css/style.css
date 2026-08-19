@@ -1,11 +1,19 @@
-body{
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
     display: flex;
     flex-direction: column;
     width: 100vw;
-    background-color: hsl(0, 0%, 6%);
-    color: white;
+    height: 100vh;
+    color: hsl(0, 0%, 0%);
     margin: 0;
     padding: 0;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
 }
 
 .mainHeader {
@@ -13,24 +21,81 @@ body{
     background-color: hsl(0, 0%, 0%);
     padding: 10px;
     border-bottom: 5px solid;
-     border-color: transparent;
-     /* borde con linear gradient*/
-     background:
-     /* capa superior: fondo negro */
-     linear-gradient(#121212, #121212) padding-box,
-     /* capa inferior: degrade */
-     linear-gradient(
-        80deg, rgb(245, 251, 63) 0%,
-        rgba(43, 172, 237, 1) 32%,
-        rgba(151, 185, 79, 1) 60%,
-        rgba(174, 92, 199, 1) 72%,
-        rgba(252, 70, 107, 1) 100%) border-box;
+    border-color: transparent;
+    /* borde con linear gradient*/
+    background:
+        /* capa superior: fondo negro */
+        linear-gradient(#121212, #121212) padding-box,
+        /* capa inferior: degrade */
+        linear-gradient(80deg,
+            rgb(245, 251, 63) 0%,
+            rgba(43, 172, 237, 1) 32%,
+            rgba(151, 185, 79, 1) 60%,
+            rgba(174, 92, 199, 1) 72%,
+            rgba(252, 70, 107, 1) 100%) border-box;
 }
 
-.mainHeader .logoColorFul{
+.mainHeader .logoColorFul {
     width: 350px;
 }
 
-.mainHeader ul li {
+nav ul {
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+}
+
+nav ul li {
+    text-align: center;
+    margin-right: 20px;
     list-style: none;
+}
+
+nav ul label {
+    margin-right: 5px;
+}
+
+nav ul li button {
+    margin: 0;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+nav ul select {
+    width: 40px;
+    text-align: center;
+}
+
+.mainHeader ul li {
+    list-style: none
+}
+
+.palletesContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.palletesContainer .palletes {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+.palletesContainer .palletes .colorCard {
+    display: flex;
+    border: 1px solid black;
+    width: 20%;
+    flex-grow: 1;
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-transform: uppercase;
 }

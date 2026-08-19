@@ -1,23 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
     <title>ColorFul Studio</title>
 </head>
+
 <body>
-    <header class="mainHeader" >
+    <header class="mainHeader">
         <img src="./assets/img/webLogo.png" alt="logoColorFul" class="logoColorFul">
     </header>
     <nav>
         <ul>
             <li>
-                <button>Generar</button>
+                <button>Generar aleatoriamente</button>
             </li>
+            <label for="selectorPaletas">
+                Cantidad de colores
+            </label>
+            <select name="selectorPaletas" id="paletteSelector">
+                <option value="6">6</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+            </select>
         </ul>
     </nav>
-    <section></section>
-    </nav>
+
+    <div class="palletesContainer">
+        <div class="palletes">
+            <div class="colorCard"></div>
+            <div class="colorCard"></div>
+            <div class="colorCard"></div>
+            <div class="colorCard"></div>
+            <div class="colorCard"></div>
+            <div class="colorCard"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>ColorFul Studio R</p>
+    </footer>
 </body>
+<script src="./js/"></script>
 </html>
