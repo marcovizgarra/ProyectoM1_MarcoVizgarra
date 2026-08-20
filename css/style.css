@@ -3,6 +3,7 @@
 body {
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
     width: 100vw;
     height: 100vh;
     color: hsl(0, 0%, 0%);
@@ -59,11 +60,6 @@ nav ul li button {
     font-size: inherit;
 }
 
-/* nav ul li select {
-    width: 40px;
-    text-align: center;
-} */
-
 .main-header ul li {
     list-style: none
 }
@@ -73,7 +69,7 @@ nav ul li button {
      justify-content: center;
      flex-direction: row;
     width: 100%;
-    height: 100%;
+    flex-grow: 1;
 }
 
 .palette-container .color-card {
@@ -82,7 +78,42 @@ nav ul li button {
      align-items:end;
     padding-bottom: 30px;
     width: 20%;
+    min-height: calc(100vh - 400px);
     flex-grow: 1;
+}
+
+#saved-palettes-section {
+    display: flex;
+     justify-content: center;
+     flex-direction: column;
+    text-align: center;
+}
+
+#saved-palettes-section .saved-palette-container {
+    display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+    
+    width: 100vw;
+    gap: 15px;
+}
+
+#saved-palettes-section .saved-palette-container .palette {
+    display: flex;
+     flex-direction: row;
+     justify-content: center;
+     align-items: end;
+    width: 80%;
+    height: 100px;
+}
+
+#saved-palettes-section .saved-palette-container .palette .color-card {
+    display: flex;
+     justify-content: center;
+     align-items:end;
+    width: 15%;
+    height: 100%;
 }
 
 footer {

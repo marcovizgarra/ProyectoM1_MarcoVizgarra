@@ -4,6 +4,9 @@ const palettesContainer = document.getElementById('palette-container');
 const toastMessage = document.getElementById('toast-message');
 const hexFormatBtn = document.getElementById('hex-format-btn');
 const hslFormatBtn = document.getElementById('hsl-format-btn');
+const savePaletteBtn = document.getElementById('save-palette-btn');
+const savedPalettesContainer = document.getElementById('saved-palette-container');
+const savedPalettesSection = document.getElementById('saved-palettes-section');
 
 // helper: RGB a HEX
 const rgbToHex = (rgb) => {
@@ -120,8 +123,68 @@ const changeFormat = (newFormat) => {
     };
 };
 
+//
+savePaletteBtn.addEventListener('click', () => {
+    const colorCards = document.querySelectorAll('#palette-container .color-card');
+    const colorsToSave = [];
+
+    colorCards.forEach((card) => {
+        colorsToSave.push(card.style.backgroundColor);
+    });
+
+    const savedData = localStorage.getItem('savedPalettesList');
+    let savedPalettes = savedData ? JSON.parse(savedData) : [];
+    savedPalettes.unshift(colorsToSave);
+
+    if (savedPalettes.length > 10) {
+        savedPalettes.pop();
+    };
+
+    localStorage.setItem('savedPalettesList', JSON.stringify(savedPalettes));
+
+    showToast('¡Paleta guardada!');
+    renderSavedPalette();
+});
+
+const renderSavedPalette = () => {
+    const savedData = localStorage.getItem('savedPalettesList');
+
+    if (savedData) {
+        const savedPalettes = JSON.parse(savedData);
+
+        if (savedPalettes.length > 0) {
+            savedPalettesSection.style.display = 'flex';
+            savedPalettesContainer.innerHTML = '';
+            savedPalettes.forEach((palette) => {
+
+                const paletteRow = document.createElement('div');
+                 paletteRow.classList.add('palette');
+                 palette.forEach((color) => {
+
+                    const card = document.createElement('div');
+                     card.classList.add('color-card');
+                     card.style.backgroundColor = color;
+                     card.textContent = color;
+                     card.style.color = getContrastColor(card.style.backgroundColor);;
+                    
+                    paletteRow.appendChild(card);
+                });
+
+                savedPalettesContainer.appendChild(paletteRow);
+            });
+        } else {
+            // Si el array está vacío, OCULTAMOS la sección
+            savedPalettesSection.style.display = 'none';
+        }
+    } else {
+        // Si no hay datos en el localStorage, OCULTAMOS la sección
+        savedPalettesSection.style.display = 'none';
+    }
+};
+
 hexFormatBtn.addEventListener('click', () => changeFormat('HEX'));
 hslFormatBtn.addEventListener('click', () => changeFormat('HSL'));
 generateBtn.addEventListener('click', generatePalette);
 
 generatePalette();
+renderSavedPalette();
