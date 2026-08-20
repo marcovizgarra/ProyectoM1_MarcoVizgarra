@@ -87,6 +87,7 @@ nav ul li button {
      justify-content: center;
      flex-direction: column;
     text-align: center;
+    display: none;
 }
 
 #saved-palettes-section .saved-palette-container {
@@ -94,7 +95,6 @@ nav ul li button {
      flex-direction: column;
      justify-content: center;
      align-items: center;
-    
     width: 100vw;
     gap: 15px;
 }

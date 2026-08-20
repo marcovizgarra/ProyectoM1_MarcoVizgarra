@@ -7,6 +7,9 @@ const hslFormatBtn = document.getElementById('hsl-format-btn');
 const savePaletteBtn = document.getElementById('save-palette-btn');
 const savedPalettesContainer = document.getElementById('saved-palette-container');
 const savedPalettesSection = document.getElementById('saved-palettes-section');
+const viewSavedPaletteBtn = document.getElementById('view-saved-palettes-btn');
+const navItems = document.getElementById('nav-items');
+const hideSavedPalettesBtn = document.getElementById('hide-saved-palettes-btn')
 
 // helper: RGB a HEX
 const rgbToHex = (rgb) => {
@@ -142,7 +145,6 @@ savePaletteBtn.addEventListener('click', () => {
 
     localStorage.setItem('savedPalettesList', JSON.stringify(savedPalettes));
 
-    showToast('¡Paleta guardada!');
     renderSavedPalette();
 });
 
@@ -150,7 +152,19 @@ const renderSavedPalette = () => {
     const savedData = localStorage.getItem('savedPalettesList');
 
     if (savedData) {
+        
         const savedPalettes = JSON.parse(savedData);
+         const listItem = document.createElement('li');
+         const hidePaletteBtn = document.createElement('button');
+
+         hidePaletteBtn.setAttribute('id', 'hide-saved-palettes-btn');
+         hidePaletteBtn.innerHTML = 'Ocultar paletas guardadas';
+         hidePaletteBtn.addEventListener('click', removeSavedPalettes);
+         
+         listItem.setAttribute('id', 'hide-saved-palettes-btn-li');
+         listItem.appendChild(hidePaletteBtn)
+         
+         navItems.append(listItem);
 
         if (savedPalettes.length > 0) {
             savedPalettesSection.style.display = 'flex';
@@ -173,18 +187,26 @@ const renderSavedPalette = () => {
                 savedPalettesContainer.appendChild(paletteRow);
             });
         } else {
-            // Si el array está vacío, OCULTAMOS la sección
-            savedPalettesSection.style.display = 'none';
+            savedPalettesSection.innerHTML = '';
         }
     } else {
-        // Si no hay datos en el localStorage, OCULTAMOS la sección
-        savedPalettesSection.style.display = 'none';
+        savedPalettesSection.innerHTML = '';
     }
+};
+
+const removeSavedPalettes = () => {
+    if (document.getElementById('hide-saved-palettes-btn-li')) {
+        const hideSavedPalettesBtnContainer = document.getElementById('hide-saved-palettes-btn-li');
+        hideSavedPalettesBtnContainer.remove();
+        savedPalettesContainer.innerHTML = '';
+    } else {
+        return;
+    };
 };
 
 hexFormatBtn.addEventListener('click', () => changeFormat('HEX'));
 hslFormatBtn.addEventListener('click', () => changeFormat('HSL'));
 generateBtn.addEventListener('click', generatePalette);
+viewSavedPaletteBtn.addEventListener('click', renderSavedPalette);
 
 generatePalette();
-renderSavedPalette();
