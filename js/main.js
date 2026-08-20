@@ -152,7 +152,6 @@ const renderSavedPalette = () => {
     const savedData = localStorage.getItem('savedPalettesList');
 
     if (savedData) {
-        
         const savedPalettes = JSON.parse(savedData);
          const listItem = document.createElement('li');
          const hidePaletteBtn = document.createElement('button');
@@ -199,6 +198,7 @@ const removeSavedPalettes = () => {
         const hideSavedPalettesBtnContainer = document.getElementById('hide-saved-palettes-btn-li');
         hideSavedPalettesBtnContainer.remove();
         savedPalettesContainer.innerHTML = '';
+        savedPalettesSection.style.display = 'none';
     } else {
         return;
     };
