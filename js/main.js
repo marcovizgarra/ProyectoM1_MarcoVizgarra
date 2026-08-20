@@ -45,7 +45,7 @@ const getContrastColor = (rgbString) => {
     return (yiq >= 128) ? '#000000' : '#FFFFFF';
 };
 
-// función generadora de colores aleatorios
+// generadora de colores aleatorios
 const generateRandomHexColor = () => {
     const hexCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
     let hexColor = '#';
@@ -58,7 +58,7 @@ const generateRandomHexColor = () => {
     return hexColor;
 }
 
-// función creadora de paletas dentro del contenedor HTML
+// creador de paletas dentro del contenedor HTML
 let currentPalleteSize = 6;
 const generatePalette = () => {
     palettesContainer.innerHTML = '';
@@ -81,7 +81,7 @@ const generatePalette = () => {
     }
 };
 
-// función modificadora de variable currentPalleteSize, que toma el valor del tamaño de paleta seleccionada y genera una nueva
+// modificadora de variable currentPalleteSize, que toma el valor del tamaño de paleta seleccionada y genera una nueva
 const sizeButtons = document.querySelectorAll('#palette-size-selector button');
 sizeButtons.forEach((button) => {
     button.addEventListener('click', (event) => {
@@ -99,7 +99,7 @@ const showToast = () => {
     }, 2000)
 };
 
-// función de cambio de formato HEX/HSL
+// cambio de formato HEX/HSL
 let currentFormat = 'HEX';
 const changeFormat = (newFormat) => {
     if (currentFormat !== newFormat) {
@@ -126,7 +126,7 @@ const changeFormat = (newFormat) => {
     };
 };
 
-//
+// guardar paletas
 savePaletteBtn.addEventListener('click', () => {
     const colorCards = document.querySelectorAll('#palette-container .color-card');
     const colorsToSave = [];
@@ -148,37 +148,47 @@ savePaletteBtn.addEventListener('click', () => {
     renderSavedPalette();
 });
 
+// renderizar paletas
 const renderSavedPalette = () => {
     const savedData = localStorage.getItem('savedPalettesList');
 
     if (savedData) {
         const savedPalettes = JSON.parse(savedData);
-         const listItem = document.createElement('li');
-         const hidePaletteBtn = document.createElement('button');
+        
+        if (!document.getElementById('hide-saved-palettes-btn-li')) {
+            const listItem = document.createElement('li');
+            const hidePaletteBtn = document.createElement('button');
+            const btnImg = document.createElement('img'); 
 
-         hidePaletteBtn.setAttribute('id', 'hide-saved-palettes-btn');
-         hidePaletteBtn.innerHTML = 'Ocultar paletas guardadas';
-         hidePaletteBtn.addEventListener('click', removeSavedPalettes);
-         
-         listItem.setAttribute('id', 'hide-saved-palettes-btn-li');
-         listItem.appendChild(hidePaletteBtn)
-         
-         navItems.append(listItem);
+            hidePaletteBtn.setAttribute('id', 'hide-saved-palettes-btn');
+            hidePaletteBtn.innerHTML = 'Ocultar paletas guardadas';
+            
+            btnImg.src = './assets/img/icons/visibility_off_24dp_FFFFFF.svg';
+            btnImg.alt = 'hide-saved-palette-img';
+            
+            hidePaletteBtn.append(btnImg);
+            hidePaletteBtn.addEventListener('click', removeSavedPalettes);
+            
+            listItem.setAttribute('id', 'hide-saved-palettes-btn-li');
+            listItem.appendChild(hidePaletteBtn);
+            
+            navItems.append(listItem);
+        }
 
         if (savedPalettes.length > 0) {
             savedPalettesSection.style.display = 'flex';
             savedPalettesContainer.innerHTML = '';
+            
             savedPalettes.forEach((palette) => {
-
                 const paletteRow = document.createElement('div');
-                 paletteRow.classList.add('palette');
-                 palette.forEach((color) => {
-
+                paletteRow.classList.add('palette');
+                
+                palette.forEach((color) => {
                     const card = document.createElement('div');
-                     card.classList.add('color-card');
-                     card.style.backgroundColor = color;
-                     card.textContent = color;
-                     card.style.color = getContrastColor(card.style.backgroundColor);;
+                    card.classList.add('color-card');
+                    card.style.backgroundColor = color;
+                    card.textContent = color;
+                    card.style.color = getContrastColor(card.style.backgroundColor);
                     
                     paletteRow.appendChild(card);
                 });
@@ -186,13 +196,14 @@ const renderSavedPalette = () => {
                 savedPalettesContainer.appendChild(paletteRow);
             });
         } else {
-            savedPalettesSection.innerHTML = '';
+            savedPalettesSection.style.display = 'none';
         }
     } else {
-        savedPalettesSection.innerHTML = '';
+        savedPalettesSection.style.display = 'none';
     }
 };
 
+// ocultar paletas
 const removeSavedPalettes = () => {
     if (document.getElementById('hide-saved-palettes-btn-li')) {
         const hideSavedPalettesBtnContainer = document.getElementById('hide-saved-palettes-btn-li');

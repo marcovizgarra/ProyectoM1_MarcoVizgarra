@@ -10,9 +10,9 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Roboto", sans-serif;
-     font-optical-sizing: auto;
-     font-weight: normal;
-     font-style: normal;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
 }
 
 .main-header {
@@ -20,11 +20,9 @@ body {
     padding: 10px;
     border-bottom: 5px solid;
     border-color: transparent;
-    /* borde con linear gradient*/
+    /* Borde con degrade */
     background:
-        /* capa superior: fondo negro */
         linear-gradient(#121212, #121212) padding-box,
-        /* capa inferior: degrade */
         linear-gradient(80deg,
             rgb(245, 251, 63) 0%,
             rgba(43, 172, 237, 1) 32%,
@@ -37,45 +35,123 @@ body {
     width: 350px;
 }
 
+nav {
+    background-color: black;
+    padding: 8px 0;
+}
+
 nav ul {
     display: flex;
-     flex-direction: row;
+    flex-direction: row;
+    align-items: center;
     height: fit-content;
-}
-
-nav ul li {
-    text-align: center;
-    margin-right: 20px;
-    list-style: none;
-}
-
-nav ul label {
-    margin-right: 5px;
-}
-
-nav ul li button {
     margin: 0;
-    padding: 0;
+    padding-left: 20px;
+}
+
+/* Píldoras del menú (altura reducida a 42px) */
+nav ul li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-right: 15px;
+    list-style: none;
+    color: white;
+    height: 42px; /* Reducido para que sea más compacto */
+    padding: 0 12px;
+    border-radius: 100px;
+    background-color: rgb(38, 148, 142);
+    border: 1px solid white;
+    box-sizing: border-box;
+}
+
+/* Label con tamaño unificado */
+nav ul label {
+    margin-right: 8px;
+    margin-left: 5px;
+    font-size: 0.85rem; /* Tamaño de texto unificado */
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Botones principales directos del nav */
+nav ul > li > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0 10px;
     font-family: inherit;
-    font-size: inherit;
+    font-size: 0.85rem; /* Tamaño de texto unificado */
+    color: inherit;
+    background-color: transparent;
+    border: none;
+    border-radius: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+nav ul > li > button > img {
+    padding-left: 8px;
 }
 
 .main-header ul li {
-    list-style: none
+    list-style: none;
 }
+
+/* =========================================
+   ESTILOS DE CÁPSULA (SEGMENTED CONTROL)
+   ========================================= */
+
+.palette-size, #format-selector {
+    display: inline-flex;
+    align-items: center;
+    background-color: #121212;
+    border: 1px solid white;
+    border-radius: 100px;
+    padding: 2px;
+}
+
+.palette-size button, #format-selector button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-radius: 100px;
+    padding: 4px 10px;
+    font-family: inherit;
+    font-size: 0.85rem; /* Tamaño de texto unificado */
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.palette-size button:hover:not(.active), #format-selector button:hover:not(.active) {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.palette-size button.active, #format-selector button.active {
+    background-color: rgb(38, 148, 142);
+    color: white;
+    font-weight: bold;
+}
+
+/* ========================================= */
 
 .palette-container {
     display: flex;
-     justify-content: center;
-     flex-direction: row;
+    justify-content: center;
+    flex-direction: row;
     width: 100%;
     flex-grow: 1;
 }
 
 .palette-container .color-card {
     display: flex;
-     justify-content: center;
-     align-items:end;
+    justify-content: center;
+    align-items: end;
     padding-bottom: 30px;
     width: 20%;
     min-height: calc(100vh - 400px);
@@ -84,42 +160,42 @@ nav ul li button {
 
 #saved-palettes-section {
     display: flex;
-     justify-content: center;
-     flex-direction: column;
+    justify-content: center;
+    flex-direction: column;
     text-align: center;
     display: none;
 }
 
 #saved-palettes-section .saved-palette-container {
     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
     gap: 15px;
 }
 
 #saved-palettes-section .saved-palette-container .palette {
     display: flex;
-     flex-direction: row;
-     justify-content: center;
-     align-items: end;
+    flex-direction: row;
+    justify-content: center;
+    align-items: end;
     width: 80%;
     height: 100px;
 }
 
 #saved-palettes-section .saved-palette-container .palette .color-card {
     display: flex;
-     justify-content: center;
-     align-items:end;
+    justify-content: center;
+    align-items: end;
     width: 15%;
     height: 100%;
 }
 
 footer {
     display: flex;
-     flex-direction: row;
-     justify-content: center;
+    flex-direction: row;
+    justify-content: center;
     text-transform: uppercase;
 }
 
@@ -138,14 +214,11 @@ footer {
     font-weight: bold;
     transition: opacity 0.3s ease, transform 0.3s ease;
     box-shadow: -1px 3px 100px 40px rgba(14, 168, 12, 0.59);
-     -webkit-box-shadow: -1px 3px 100px 40px rgba(36, 206, 36, 0.59);   
+    -webkit-box-shadow: -1px 3px 100px 40px rgba(36, 206, 36, 0.59);   
     border: 2px solid;
-     border-color: transparent;
-     /* borde con linear gradient*/
-     background:
-        /* capa superior: fondo negro */
+    border-color: transparent;
+    background:
         linear-gradient(#121212, #121212) padding-box,
-        /* capa inferior: degrade */
         linear-gradient(80deg,
             rgb(217, 224, 7) 0%,
             rgb(83, 192, 0) 32%,

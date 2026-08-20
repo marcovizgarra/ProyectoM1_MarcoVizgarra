@@ -15,22 +15,24 @@
     <nav>
         <ul id="nav-items">
             <li>
-                <button id="generate-btn">Generar aleatoriamente</button>
+                <button id="generate-btn">
+                    Generar aleatoriamente
+                </button>
             </li>
             <li>
                 <label for="palette-selector">
-                    Tamaño de paleta
+                    Tamaño
                 </label>
                 <div class="palette-size" id="palette-size-selector">
-                    <button>6</button>
+                    <button class="active">6</button>
                     <button>8</button>
                     <button>9</button>
                 </div>
             </li>
             <li>
-                <label for="format-selector">Formato del color</label>
+                <label for="format-selector">Formato</label>
                 <div id="format-selector" name="format-selector">
-                    <button id="hex-format-btn">HEX</button>
+                    <button id="hex-format-btn" class="active">HEX</button>
                     <button id="hsl-format-btn">HSL</button>
                 </div>
             </li>
@@ -41,7 +43,10 @@
                 </button>
             </li>
             <li>
-                <button id="view-saved-palettes-btn">Ver paletas guardadas</button>
+                <button id="view-saved-palettes-btn">
+                    Ver paletas guardadas
+                <img src="./assets/img/icons/visibility_24dp_FFFFFF.svg" alt="ver-paletas">
+                </button>
             </li>
         </ul>
     </nav>
