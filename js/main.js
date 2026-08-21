@@ -58,7 +58,7 @@ const generateRandomHexColor = () => {
     return hexColor;
 }
 
-// creador de paletas dentro del contenedor HTML
+// render de paletas
 let currentPalleteSize = 6;
 const generatePalette = () => {
     palettesContainer.innerHTML = '';
@@ -71,6 +71,7 @@ const generatePalette = () => {
         card.style.backgroundColor = randomColor;
         card.textContent = randomColor;
         card.style.color = getContrastColor(card.style.backgroundColor);
+        card.title= 'Copiar';
 
         card.addEventListener('click', () => {
             navigator.clipboard.writeText(randomColor);
@@ -155,7 +156,7 @@ savePaletteBtn.addEventListener('click', () => {
     renderSavedPalette();
 });
 
-// renderizar paletas
+// renderizar paletas guardadas
 const renderSavedPalette = () => {
     const savedData = localStorage.getItem('savedPalettesList');
 
