@@ -4,7 +4,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     color: hsl(0, 0%, 0%);
     margin: 0;
@@ -16,19 +16,9 @@ body {
 }
 
 .main-header {
-    display: flex;  
+    display: flex;
     padding: 10px;
-    border-bottom: 5px solid;
-    border-color: transparent;
-    /* Borde con degrade */
-    background:
-        linear-gradient(#121212, #121212) padding-box,
-        linear-gradient(80deg,
-            rgb(245, 251, 63) 0%,
-            rgba(43, 172, 237, 1) 32%,
-            rgba(151, 185, 79, 1) 60%,
-            rgba(174, 92, 199, 1) 72%,
-            rgba(252, 70, 107, 1) 100%) border-box;
+    background-color: black;
 }
 
 .main-header .logo-color-ful {
@@ -49,7 +39,7 @@ nav ul {
     padding-left: 20px;
 }
 
-/* Píldoras del menú (altura reducida a 42px) */
+
 nav ul li {
     display: flex;
     flex-direction: row;
@@ -59,25 +49,27 @@ nav ul li {
     margin-right: 15px;
     list-style: none;
     color: white;
-    height: 42px; /* Reducido para que sea más compacto */
+    height: 42px;
     padding: 0 12px;
     border-radius: 100px;
-    background-color: rgb(38, 148, 142);
-    border: 1px solid white;
+    background-color: transparent;
     box-sizing: border-box;
 }
 
-/* Label con tamaño unificado */
+nav ul li:hover {
+    background-color: rgb(53, 53, 55);
+    font-weight: bold;
+}
+
 nav ul label {
     margin-right: 8px;
     margin-left: 5px;
-    font-size: 0.85rem; /* Tamaño de texto unificado */
+    font-size: 0.85rem;
     font-weight: 500;
     white-space: nowrap;
 }
 
-/* Botones principales directos del nav */
-nav ul > li > button {
+nav ul>li>button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -86,7 +78,7 @@ nav ul > li > button {
     margin: 0;
     padding: 0 10px;
     font-family: inherit;
-    font-size: 0.85rem; /* Tamaño de texto unificado */
+    font-size: 0.85rem;
     color: inherit;
     background-color: transparent;
     border: none;
@@ -95,17 +87,13 @@ nav ul > li > button {
     white-space: nowrap;
 }
 
-nav ul > li > button > img {
+nav ul>li>button>img {
     padding-left: 8px;
 }
 
 .main-header ul li {
     list-style: none;
 }
-
-/* =========================================
-   ESTILOS DE CÁPSULA (SEGMENTED CONTROL)
-   ========================================= */
 
 .palette-size, #format-selector {
     display: inline-flex;
@@ -116,14 +104,14 @@ nav ul > li > button > img {
     padding: 2px;
 }
 
-.palette-size button, #format-selector button {
+.palette-size button,  #format-selector button {
     background-color: transparent;
     color: white;
     border: none;
     border-radius: 100px;
     padding: 4px 10px;
     font-family: inherit;
-    font-size: 0.85rem; /* Tamaño de texto unificado */
+    font-size: 0.85rem;
     cursor: pointer;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
@@ -133,12 +121,10 @@ nav ul > li > button > img {
 }
 
 .palette-size button.active, #format-selector button.active {
-    background-color: rgb(38, 148, 142);
-    color: white;
+    background-color: rgb(240, 228, 2);
+    color: black;
     font-weight: bold;
 }
-
-/* ========================================= */
 
 .palette-container {
     display: flex;
@@ -159,44 +145,96 @@ nav ul > li > button > img {
 }
 
 #saved-palettes-section {
+    background-color: black;
+    color: white;
     display: flex;
-    justify-content: center;
+    align-items: center;
     flex-direction: column;
     text-align: center;
     display: none;
 }
 
 #saved-palettes-section .saved-palette-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    gap: 15px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 90vw;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 30px;
 }
 
 #saved-palettes-section .saved-palette-container .palette {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: end;
-    width: 80%;
+    width: 100%;
     height: 100px;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 #saved-palettes-section .saved-palette-container .palette .color-card {
     display: flex;
     justify-content: center;
     align-items: end;
-    width: 15%;
+    flex: 1;
     height: 100%;
+    padding-bottom: 5px;
 }
 
 footer {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    text-transform: uppercase;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+    background-color: #121212;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    border-top: 5px solid;
+    border-color: transparent;
+    background:
+        linear-gradient(#121212, #121212) padding-box,
+        linear-gradient(80deg,
+            rgb(245, 251, 63) 0%,
+            rgba(43, 172, 237, 1) 32%,
+            rgba(151, 185, 79, 1) 60%,
+            rgba(174, 92, 199, 1) 72%,
+            rgba(252, 70, 107, 1) 100%) border-box;
+}
+
+footer > a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 8px 20px;
+    border-radius: 100px;
+    text-decoration: none;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+footer > a p {
+    margin: 0;
+}
+
+footer > a img {
+    height: 20px;
+    transition: filter 0.3s ease;
+}
+
+footer > a:hover {
+    background-color: rgb(240, 228, 2);
+    color: black;
+    transform: translateY(-3px);
+}
+
+footer > a:hover img {
+    filter: brightness(0);
 }
 
 .toast {
@@ -213,8 +251,6 @@ footer {
     border-radius: 100px;
     font-weight: bold;
     transition: opacity 0.3s ease, transform 0.3s ease;
-    box-shadow: -1px 3px 100px 40px rgba(14, 168, 12, 0.59);
-    -webkit-box-shadow: -1px 3px 100px 40px rgba(36, 206, 36, 0.59);   
     border: 2px solid;
     border-color: transparent;
     background:
