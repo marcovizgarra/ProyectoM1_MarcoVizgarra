@@ -72,8 +72,10 @@ const generatePalette = () => {
 
         if (currentFormat === 'HEX') {
             card.textContent = randomColor;
+            card.style.fontSize = '';
         } else {
             card.textContent = rgbToHsl(card.style.backgroundColor);
+            card.style.fontSize = 'medium';
         }
 
         card.style.color = getContrastColor(card.style.backgroundColor);
@@ -117,16 +119,17 @@ const changeFormat = (newFormat) => {
     if (currentFormat !== newFormat) {
         currentFormat = newFormat;
 
-        // Seleccionamos TODAS las color-cards (tanto las del generador como las guardadas)
         let colorCards = document.querySelectorAll('.color-card');
-
+        
         colorCards.forEach((card) => {
             const currentRgbColor = card.style.backgroundColor;
 
             if (currentFormat === 'HEX') {
                 card.textContent = rgbToHex(currentRgbColor);
+                card.style.fontSize = '';
             } else {
                 card.textContent = rgbToHsl(currentRgbColor);
+                card.style.fontSize = 'medium';
             }
         });
 
@@ -201,15 +204,17 @@ const renderSavedPalette = () => {
                     const card = document.createElement('div');
                     card.classList.add('color-card');
                     card.style.backgroundColor = color;
-
+                    
                     if (currentFormat === 'HEX') {
                         card.textContent = rgbToHex(color);
+                        card.style.fontSize = '';
                     } else {
                         card.textContent = rgbToHsl(color);
+                        card.style.fontSize = 'medium';
                     }
-
+                    
                     card.style.color = getContrastColor(card.style.backgroundColor);
-
+                    
                     paletteRow.appendChild(card);
                 });
 

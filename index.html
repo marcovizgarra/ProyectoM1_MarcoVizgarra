@@ -2,9 +2,11 @@
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" href="./public/favicon.svg" type="image">
     <title>ColorFul Studio</title>
 </head>
 
@@ -45,7 +47,7 @@
             <li>
                 <button id="view-saved-palettes-btn">
                     Ver paletas guardadas
-                <img src="./assets/img/icons/visibility_24dp_FFFFFF.svg" alt="ver-paletas">
+                    <img src="./assets/img/icons/visibility_24dp_FFFFFF.svg" alt="ver-paletas">
                 </button>
             </li>
         </ul>
@@ -61,17 +63,19 @@
     </section>
 
     <footer>
-        <a href="https://github.com/marcovizgarra" target="_blank">
-            <img src="./assets/img/icons/gitHub_lockup_white.svg" alt="git-hub-link">
-        </a>
-        <a href="https://www.linkedin.com/in/marco-vizgarra/" target="_blank">
-            <img src="./assets/img/icons/linkedin_svgrepo.svg" alt="linkedin-link">
-        </a>
+        <p class="footer-credits">© 2026 ColorFul Studio | Proyecto Frontend | Marco Vizgarra</p>
+        <div class="social-links">
+            <a href="https://github.com/marcovizgarra" target="_blank" title="GitHub-Link">
+                <img src="./assets/img/icons/gitHub_lockup_white.svg" alt="git-hub-link">
+            </a>
+            <a href="https://www.linkedin.com/in/marco-vizgarra/" target="_blank" title="LinkedIn-Link">
+                <img src="./assets/img/icons/linkedin_svgrepo.svg" alt="linkedin-link">
+            </a>
+        </div>
     </footer>
 
     <div id="toast-message" class="toast hidden">
         ¡Color copiado!
-        
     </div>
 </body>
 <script src="./js/main.js"></script>

@@ -25,7 +25,7 @@ body {
 }
 
 .main-header .logo-color-ful {
-    width: 350px;
+    width: 320px;
 }
 
 nav {
@@ -161,6 +161,13 @@ nav ul > li > button > img {
     border-top: 3px solid yellow;
 }
 
+#saved-palettes-section h2 {
+    letter-spacing: 10px;
+    font-weight: bold;
+    font-size: x-large;
+    text-shadow: -1px -2px 8px yellow;
+}
+
 #saved-palettes-section .saved-palette-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -191,16 +198,15 @@ nav ul > li > button > img {
 
 footer {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
-    padding: 20px 0;
+    gap: 15px;
+    padding: 10px 0;
     background-color: #121212;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    border-top: 5px solid;
-    border-color: transparent;
+    border-top: 5px solid transparent;
     background:
         linear-gradient(#121212, #121212) padding-box,
         linear-gradient(80deg,
@@ -211,7 +217,20 @@ footer {
             rgba(252, 70, 107, 1) 100%) border-box;
 }
 
-footer > a {
+.footer-credits {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+    text-align: center;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.social-links > a {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -225,22 +244,18 @@ footer > a {
     transition: all 0.3s ease;
 }
 
-footer > a p {
-    margin: 0;
-}
-
-footer > a img {
-    height: 20px;
+.social-links > a img {
+    height: 18px;
     transition: filter 0.3s ease;
 }
 
-footer > a:hover {
+.social-links > a:hover {
     background-color: rgb(240, 228, 2);
     color: black;
     transform: translateY(-3px);
 }
 
-footer > a:hover img {
+.social-links > a:hover img {
     filter: brightness(0);
 }
 
