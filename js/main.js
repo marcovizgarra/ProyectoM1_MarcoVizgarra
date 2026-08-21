@@ -62,20 +62,26 @@ const generateRandomHexColor = () => {
 let currentPalleteSize = 6;
 const generatePalette = () => {
     palettesContainer.innerHTML = '';
+    
     for (let i = 0; i < currentPalleteSize; i++) {
         const randomColor = generateRandomHexColor();
-
         const card = document.createElement('div');
+        
         card.classList.add('color-card');
-
         card.style.backgroundColor = randomColor;
-        card.textContent = randomColor;
+
+        if (currentFormat === 'HEX') {
+            card.textContent = randomColor;
+        } else {
+            card.textContent = rgbToHsl(card.style.backgroundColor);
+        }
+
         card.style.color = getContrastColor(card.style.backgroundColor);
-        card.title= 'Copiar';
 
         card.addEventListener('click', () => {
-            navigator.clipboard.writeText(randomColor);
-            showToast(randomColor);
+            const colorToCopy = card.textContent;
+            navigator.clipboard.writeText(colorToCopy);
+            showToast(colorToCopy);
         });
 
         palettesContainer.appendChild(card);
